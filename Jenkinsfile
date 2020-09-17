@@ -40,7 +40,7 @@ pipeline {
             }
             steps {
                 input 'Deploy to Production?'
-                milestone(7)
+                milestone(1)
                 withCredentials([usernamePassword(creddentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     script {
                         sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@prod_ip \"docker pull emiliot/train-schedule:${env.BUILD_NUMBER}\""
